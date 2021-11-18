@@ -6,8 +6,11 @@ use Facade\FlareClient\Http\Response as HttpResponse;
 use Illuminate\Http\Request;
 use Response;
 use App\Models\OrderDetail;
+
 use App\Validators\OrderDetailValidator;
+
 use App\Transformers\OrderDetailTransformer;
+
 use App\Helpers\DataHelper;
 use App\Helpers\ResponseHelper;
 
@@ -19,7 +22,6 @@ class OrderDetailController extends Controller
         $this->orderDetailTransformer = $orderDetailTransformer;
         $this->orderDetailValidator = $orderDetailValidator;
     }
-
     public function index(Request $request, Response $response)
     {
         $params = $request->all();
@@ -36,25 +38,4 @@ class OrderDetailController extends Controller
         return ResponseHelper::success($response, $data);
     }
 
-    public function find(Request $request, Response $response)
-    {
-        
-
-    }
-
-    public function save(Request $request, Response $response)
-    {
-        
-        
-    }
-
-    public function update(Request $request, Response $response)
-    {
-       
-    }
-
-    public function delete(Request $request, Response $response)
-    {
-        
-    }
 }

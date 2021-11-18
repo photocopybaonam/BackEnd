@@ -7,11 +7,16 @@ use Illuminate\Http\Request;
 use Response;
 use App\Models\User;
 use App\Models\Token;
+
 use App\Validators\UserValidator;
+
 use App\Transformers\TokenTransformer;
+
 use App\Helpers\JwtHelper;
 use App\Helpers\DataHelper;
 use App\Helpers\ResponseHelper;
+
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -61,5 +66,17 @@ class UserController extends Controller
             }
         }
         return ResponseHelper::requestFailed($response);
+    }
+    public function sentMail()
+    {
+        $data = [
+          'title'=>'Hellow Avijit',
+          'content'=>'This is a testing of mailing in Laravel using mailgun'
+        ];
+
+        \Mail::send('nguyentrungtin913@gmail.com', $data, function($message) {
+            $message->to('nttin_18th1@student.agu.edu.vn', 'Avijit Biswas')
+                ->subject('This is Subject');
+        });
     }
 }
