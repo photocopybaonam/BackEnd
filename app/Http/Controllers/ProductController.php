@@ -376,7 +376,7 @@ class ProductController extends Controller
 
         $query = $this->productModel->filter($this->productModel::query(), $params)->orderBy($orderBy['sortBy'], $orderBy['sortType']);
         $query = $this->productModel->includes($query, $with);
-        $query = $query->select('pro_id', 'pro_name','pro_image','pro_ex_price','pro_amount','pro_type');
+        $query = $query->select('pro_id', 'pro_name', 'pro_image', 'pro_ex_price', 'pro_amount', 'pro_note', 'pro_type');
 
         $data = DataHelper::getList($query, $this->productTransformer, $perPage, 'ListAllProduct');
         
